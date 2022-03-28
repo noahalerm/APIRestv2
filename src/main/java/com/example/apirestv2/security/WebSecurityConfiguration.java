@@ -58,40 +58,40 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         return super.authenticationManagerBean();
     }
 
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-//        http
-////                .cors()
-////                .and()
-//                .httpBasic()
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+//                .cors()
 //                .and()
-////                .exceptionHandling().authenticationEntryPoint(myAuthenticationEntryPoint)
-////                .and()
-//                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .httpBasic()
+                .and()
+//                .exceptionHandling().authenticationEntryPoint(myAuthenticationEntryPoint)
 //                .and()
-//
-//
-//                //H2-CONSOLE
-//                .authorizeRequests().antMatchers("/").permitAll().and()
-//                .authorizeRequests().antMatchers("/h2-console/**").permitAll()
-//                .and()
-//                .csrf().disable()
-//                .headers().frameOptions().disable()
-//                .and()
-//
-//
-//                .authorizeRequests()
-//                .antMatchers(HttpMethod.POST,"/login").permitAll()
-////                .antMatchers(HttpMethod.GET,"/login").permitAll()
-////                .antMatchers(HttpMethod.GET, "/me/**").hasRole("ADMIN") //FORBIDDEN TESTS
-//                .antMatchers(HttpMethod.GET, "/login/**","/users/**", "/series/**").hasRole("USER")
-////                .antMatchers(HttpMethod.POST, "/login/**", "/series/**").hasRole("USER")
-////                .antMatchers(HttpMethod.PUT, "/series/**").hasRole("USER")
-////                .antMatchers(HttpMethod.DELETE, "/series/**").hasRole("ADMIN")
-////                .antMatchers(HttpMethod.POST, "/series/**").hasAnyRole("USER", "ADMIN")
-//                .anyRequest().authenticated().and()
-//                .addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class);
-//    }
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+
+
+                //H2-CONSOLE
+                .authorizeRequests().antMatchers("/").permitAll().and()
+                .authorizeRequests().antMatchers("/h2-console/**").permitAll()
+                .and()
+                .csrf().disable()
+                .headers().frameOptions().disable()
+                .and()
+
+
+                .authorizeRequests()
+                .antMatchers(HttpMethod.POST,"/login").permitAll()
+//                .antMatchers(HttpMethod.GET,"/login").permitAll()
+//                .antMatchers(HttpMethod.GET, "/me/**").hasRole("ADMIN") //FORBIDDEN TESTS
+                .antMatchers(HttpMethod.GET, "/login/**","/users/**", "/series/**").hasRole("USER")
+//                .antMatchers(HttpMethod.POST, "/login/**", "/series/**").hasRole("USER")
+//                .antMatchers(HttpMethod.PUT, "/series/**").hasRole("USER")
+//                .antMatchers(HttpMethod.DELETE, "/series/**").hasRole("ADMIN")
+//                .antMatchers(HttpMethod.POST, "/series/**").hasAnyRole("USER", "ADMIN")
+                .anyRequest().authenticated().and()
+                .addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class);
+    }
 
 //    @Bean
 //    CorsConfigurationSource corsConfigurationSource() {
