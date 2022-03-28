@@ -48,7 +48,7 @@ public class UserController {
         }
 
         //OUTPUT
-        if (res.isEmpty())
+        if (res == null)
             return ResponseEntity.notFound().build();
         else
             return ResponseEntity.ok(aux);
@@ -67,4 +67,12 @@ public class UserController {
 
         return ResponseEntity.status(HttpStatus.CREATED).body(userJWT);
     }
+
+    /*
+    {
+        "username":"Noah",
+        "password":"1234",
+        "avatar":"noah.png"
+    }
+    */
 }
