@@ -30,10 +30,10 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     private final JWTAuthorizationFilter jwtAuthorizationFilter;
 
     //TESTING METHOD
-    @Override
-    public void configure(WebSecurity web) {
-        web.ignoring().anyRequest();
-    }
+//    @Override
+//    public void configure(WebSecurity web) {
+//        web.ignoring().anyRequest();
+//    }
 
     //"inMemoryAuthentication()" TESTING METHOD
 //    @Override
