@@ -17,5 +17,5 @@ This web contains users and series.
 - **DELETE** 🠊 "/series/{id}"
 
 ## User examples
-Noah - 1234
-Montse - 1234
+- Noah - 1234
+- Montse - 1234
