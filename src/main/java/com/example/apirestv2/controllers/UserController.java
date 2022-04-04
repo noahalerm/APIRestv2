@@ -7,6 +7,7 @@ import com.example.apirestv2.security.jwt.JwtProvider;
 import com.example.apirestv2.security.jwt.LoginPassword;
 import com.example.apirestv2.security.jwt.UserJWT;
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -15,6 +16,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,6 +54,19 @@ public class UserController {
             return ResponseEntity.notFound().build();
         else
             return ResponseEntity.ok(aux);
+    }
+
+    //POST
+    @PostMapping("/users")
+    public ResponseEntity<?> createNewUser (@RequestBody User newUser) {
+        try {
+            User res = userService.createNewUser(newUser);
+            UserDTO user = new UserDTO(res.getUsername(), res.getAvatar(), res.getRole());
+
+            return new ResponseEntity(user, HttpStatus.CREATED);
+        } catch (DataIntegrityViolationException ex) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, ex.getMessage());
+        }
     }
 
     //POST
